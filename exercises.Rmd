@@ -20,7 +20,7 @@ The histogram above shows the distribution of the measured CPU time. We can see 
 So median is chosen.
 
 ```{r}
-print(paste("Median = ", median(cpu_time)))
+paste("Median = ", median(cpu_time))
 ```
 
 ```{r}
@@ -40,7 +40,7 @@ hist(disk_io)
 Distribution is not so skewed so mean is chosen as central tendency index
 
 ```{r}
-print(paste("Mean = ", mean(disk_io)))
+paste("Mean = ", mean(disk_io))
 ```
 
 ```{r}
@@ -55,7 +55,7 @@ abline(v = mean(disk_io), col = "red", lwd = 3)
 Semi-interquantile range. For the same reason the median was chosen as index of central tendency. The distribution of the data has a positive skewed.
 
 ```{r}
-print(paste("Semi-interquantile range = ", IQR(cpu_time)/2))
+paste("Semi-interquantile range = ", IQR(cpu_time)/2)
 ```
 
 ***
@@ -63,10 +63,36 @@ print(paste("Semi-interquantile range = ", IQR(cpu_time)/2))
 ### **12.14** For the data of Exercise 12.11, compute all possible indices of dispersion. Which index would you choose and why?
 
 ```{r}
-print(paste("Range = ", range(disk_io)))
-print(paste("Standard deviation = ", sd(disk_io)))
-print(paste("C.O.V. = ", sd(disk_io) / mean(disk_io) * 100))
-print(paste("Semi-interquantile range = ", IQR(disk_io)/2))
+paste("Range = ", range(disk_io))
+paste("Standard deviation = ", sd(disk_io))
+paste("C.O.V. = ", sd(disk_io) / mean(disk_io) * 100)
+paste("Semi-interquantile range = ", IQR(disk_io)/2)
 ```
 
 The data is not bounded, so a range doesn't make sense. The distribution is symmetrical, so there is no need for SIQR. Finally, I would choose standard deviation as index of dispersion.
+
+***
+
+### ***13.2*** Answer the following for the data of Exercise 12.11:
+
+#### a. What is the 10-percentile and 90-percentile from the sample?
+
+```{r}
+quantile(disk_io, c(1/10, 9/10))
+```
+
+#### b. What is the mean number of disk I/O’s per program?
+
+```{r}
+mean(disk_io)
+```
+
+#### c. What is the 90% confidence interval for the mean?
+
+```{r}
+quantile(disk_io, c(5/100, 95/100))
+```
+
+#### d. What fraction of programs make less than or equal to 25 I/O’s and what is the 90% confidence interval for the fraction?
+
+#### e. What is the one-sided 90% confidence interval for the mean?
